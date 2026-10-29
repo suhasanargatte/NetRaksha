@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: netrakshak-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=NetRakshak
+      - APP_VERSION=0.1.0
+      - APP_ENV=production
+      - HOST=0.0.0.0
+      - PORT=8000
+      - CORS_ORIGINS=http://localhost:80,http://localhost:5173,http://127.0.0.1:80
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/netrakshak.db
+      - UPLOAD_DIR=/app/uploads
+      - REPORTS_DIR=/app/reports
+      - MAX_UPLOAD_SIZE_MB=100
+      - ML_CONTAMINATION=0.05
+      - ML_ANOMALY_THRESHOLD=0.7
+      - RULE_BRUTE_FORCE_THRESHOLD=3
+      - RULE_BRUTE_FORCE_WINDOW_SECONDS=300
+      - RULE_BURST_THRESHOLD=20
+      - RULE_BURST_WINDOW_SECONDS=60
+      - RULE_AFTER_HOURS_START=7
+      - RULE_AFTER_HOURS_END=20
+      - RULE_FAILED_THEN_SUCCESS_THRESHOLD=2
+    volumes:
+      - netrakshak_db:/app/data
+      - netrakshak_uploads:/app/uploads
+      - netrakshak_reports:/app/reports
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: netrakshak-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  netrakshak_db:
+    driver: local
+  netrakshak_uploads:
+    driver: local
+  netrakshak_reports:
+    driver: local
+

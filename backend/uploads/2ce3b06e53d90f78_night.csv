@@ -1,0 +1,2 @@
+timestamp,source_ip,user,action,service,message
+2026-10-28 02:30:00,172.16.0.22,operator,login_success,sshd,Accepted publickey for operator

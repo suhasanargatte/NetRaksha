@@ -1,0 +1,2 @@
+timestamp,source_ip,user,action,service,message
+2026-10-28 16:00:00,192.168.1.50,deploy,sudo_exec,sudo,COMMAND=/bin/bash

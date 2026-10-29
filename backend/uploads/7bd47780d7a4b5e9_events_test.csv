@@ -1,0 +1,5 @@
+timestamp,source_ip,dest_ip,user,action,service,http_status,message
+2026-10-28 14:10:01,192.168.1.105,10.0.0.1,admin,login_success,sshd,,Accepted key
+2026-10-28 14:12:15,192.168.4.77,10.0.0.1,root,login_failed,sshd,,Failed pass
+2026-10-28 14:15:30,10.0.2.88,10.0.0.5,-,GET,nginx,200,/index.html
+2026-10-28 14:15:30,10.0.2.88,10.0.0.5,-,GET,nginx,200,/index.html

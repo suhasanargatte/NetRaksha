@@ -1,0 +1,4 @@
+timestamp,source_ip,user,action,service,message
+2026-10-28 15:00:01,10.0.1.5,alice,login_failed,sshd,Failed password for alice
+2026-10-28 15:00:02,10.0.1.5,alice,login_failed,sshd,Failed password for alice
+2026-10-28 15:00:05,10.0.1.5,alice,login_success,sshd,Accepted password for alice

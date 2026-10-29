@@ -1,0 +1,11 @@
+timestamp,source_ip,dest_ip,user,action,service,http_status,message
+2026-10-28 14:10:01,192.168.1.105,10.0.0.1,admin,login_success,sshd,,Accepted publickey for admin
+2026-10-28 14:12:15,192.168.4.77,10.0.0.1,root,login_failed,sshd,,Failed password for root from 192.168.4.77
+2026-10-28 14:12:16,192.168.4.77,10.0.0.1,root,login_failed,sshd,,Failed password for root from 192.168.4.77
+2026-10-28 14:12:17,192.168.4.77,10.0.0.1,root,login_failed,sshd,,Failed password for root from 192.168.4.77
+2026-10-28 14:15:30,10.0.2.88,10.0.0.5,-,GET,nginx,200,/index.html HTTP/1.1
+2026-10-28 14:15:31,10.0.2.88,10.0.0.5,-,GET,nginx,404,/admin.php HTTP/1.1
+2026-10-28 14:15:32,10.0.2.88,10.0.0.5,-,GET,nginx,404,/.env HTTP/1.1
+2026-10-28 14:18:22,192.168.1.14,10.0.0.1,deploy,sudo_exec,sudo,,COMMAND=/bin/bash
+2026-10-28 14:18:22,192.168.1.14,10.0.0.1,deploy,sudo_exec,sudo,,COMMAND=/bin/bash
+

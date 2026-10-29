@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 14px;
+    background-color: #111114;
+    color: #F4F1EF;
+  }
+
+  body {
+    background-color: #111114;
+    color: #F4F1EF;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Refined scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #17171C;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #35353E;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #FFB69E;
+  }
+}
+
+@layer components {
+  /* ── Severity badges ─────────────────────────────────────────────────── */
+  .badge-critical {
+    @apply font-mono inline-flex items-center px-2 py-0.5 rounded text-2xs font-semibold uppercase tracking-wider;
+    color: #FF6B72;
+    background-color: rgba(255, 107, 114, 0.15);
+    border: 1px solid rgba(255, 107, 114, 0.35);
+  }
+  .badge-high {
+    @apply font-mono inline-flex items-center px-2 py-0.5 rounded text-2xs font-semibold uppercase tracking-wider;
+    color: #F2B85B;
+    background-color: rgba(242, 184, 91, 0.15);
+    border: 1px solid rgba(242, 184, 91, 0.35);
+  }
+  .badge-medium {
+    @apply font-mono inline-flex items-center px-2 py-0.5 rounded text-2xs font-semibold uppercase tracking-wider;
+    color: #F2B85B;
+    background-color: rgba(242, 184, 91, 0.12);
+    border: 1px solid rgba(242, 184, 91, 0.28);
+  }
+  .badge-low {
+    @apply font-mono inline-flex items-center px-2 py-0.5 rounded text-2xs font-semibold uppercase tracking-wider;
+    color: #89858A;
+    background-color: rgba(137, 133, 138, 0.12);
+    border: 1px solid rgba(137, 133, 138, 0.25);
+  }
+
+  /* ── Data Tables ─────────────────────────────────────────────────────── */
+  .nr-table {
+    @apply w-full text-xs border-collapse;
+  }
+  .nr-table th {
+    @apply px-3 py-2.5 text-left text-2xs font-semibold uppercase tracking-wider select-none;
+    color: #89858A;
+    background-color: #17171C;
+    border-bottom: 1px solid #35353E;
+  }
+  .nr-table td {
+    @apply px-3 py-2.5 text-xs;
+    color: #B5B0B0;
+    border-bottom: 1px solid #24242B;
+  }
+  .nr-table tbody tr {
+    transition: background-color 150ms ease;
+  }
+  .nr-table tbody tr:hover {
+    background-color: #24242B;
+  }
+
+  /* ── Card & Containers (Peach Precision) ─────────────────────────────── */
+  .nr-card {
+    background-color: #1D1D23;
+    border: 1px solid #35353E;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .nr-card-header {
+    @apply px-3.5 py-2.5 flex items-center justify-between;
+    background-color: #24242B;
+    border-bottom: 1px solid #35353E;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+  }
+
+  /* ── Input Controls ──────────────────────────────────────────────────── */
+  .nr-input {
+    @apply rounded px-3 py-1.5 text-xs transition-colors;
+    background-color: #17171C;
+    border: 1px solid #35353E;
+    color: #F4F1EF;
+    border-radius: 8px;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .nr-input:focus {
+    outline: none;
+    border-color: #FFB69E;
+    box-shadow: 0 0 0 2px rgba(255, 182, 158, 0.2);
+  }
+  .nr-input::placeholder {
+    color: #89858A;
+  }
+
+  /* ── Buttons with Restrained Glow ────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold;
+    background-color: #FFB69E;
+    color: #111114;
+    transition: background-color 150ms ease, box-shadow 150ms ease, transform 100ms ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: #FFC7B4;
+    box-shadow: 0 0 12px rgba(255, 182, 158, 0.35);
+  }
+  .btn-primary:active:not(:disabled) {
+    background-color: #E0775A;
+    transform: translateY(1px);
+  }
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #111114, 0 0 14px rgba(255, 182, 158, 0.45);
+  }
+  .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium;
+    background-color: #1D1D23;
+    border: 1px solid #35353E;
+    color: #F4F1EF;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: #24242B;
+    border-color: #FFB69E;
+    color: #FFC7B4;
+  }
+  .btn-secondary:focus-visible {
+    outline: none;
+    border-color: #FFB69E;
+    box-shadow: 0 0 0 2px rgba(255, 182, 158, 0.25);
+  }
+  .btn-secondary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium;
+    background-color: transparent;
+    color: #B5B0B0;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: #24242B;
+    color: #F4F1EF;
+  }
+  .btn-ghost:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold;
+    background-color: rgba(255, 107, 114, 0.15);
+    border: 1px solid rgba(255, 107, 114, 0.4);
+    color: #FF6B72;
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+  .btn-danger:hover:not(:disabled) {
+    background-color: rgba(255, 107, 114, 0.25);
+    border-color: rgba(255, 107, 114, 0.65);
+  }
+  .btn-danger:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #111114, 0 0 10px rgba(255, 107, 114, 0.35);
+  }
+  .btn-danger:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* ── Status pills ─────────────────────────────────────────────────────── */
+  .tech-pill {
+    @apply inline-flex items-center gap-1 font-mono text-2xs px-2 py-0.5 rounded border uppercase tracking-wider;
+  }
+  .tech-pill-active {
+    color: #FFB69E;
+    background-color: #392A29;
+    border-color: rgba(255, 182, 158, 0.35);
+  }
+  .tech-pill-nominal {
+    color: #65C99A;
+    background-color: rgba(101, 201, 154, 0.12);
+    border-color: rgba(101, 201, 154, 0.35);
+  }
+  .tech-pill-warning {
+    color: #F2B85B;
+    background-color: rgba(242, 184, 91, 0.12);
+    border-color: rgba(242, 184, 91, 0.35);
+  }
+  .tech-pill-critical {
+    color: #FF6B72;
+    background-color: rgba(255, 107, 114, 0.12);
+    border-color: rgba(255, 107, 114, 0.35);
+  }
+  .tech-pill-info {
+    color: #79B9F4;
+    background-color: rgba(121, 185, 244, 0.12);
+    border-color: rgba(121, 185, 244, 0.35);
+  }
+}
+
+/* Subtle precision grid background utility */
+.tech-grid-bg {
+  background-image: linear-gradient(to right, rgba(53, 53, 62, 0.25) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(53, 53, 62, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
